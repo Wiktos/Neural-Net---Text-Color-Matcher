@@ -15,12 +15,12 @@ public class AppController implements ActionListener {
     private static final String ERROR_NON_NUMERICAL_INPUT_MESSAGE = "Make sure that input is a numerical value";
 
     private InputPanel inputPanel;
-    private PredictPanel predictPanel;
+    private ThinkPanel thinkPanel;
     private NeuralNet neuralNet = new NeuralNet();
 
-    public AppController(InputPanel inputPanel, PredictPanel predictPanel) {
+    public AppController(InputPanel inputPanel, ThinkPanel thinkPanel) {
         this.inputPanel = inputPanel;
-        this.predictPanel = predictPanel;
+        this.thinkPanel = thinkPanel;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class AppController implements ActionListener {
             color[0] = receiveColor(redVal) / 255;
             color[1] = receiveColor(greenVal) / 255;
             color[2] = receiveColor(blueVal) / 255;
-            predictPanel.changeBackgroundColor(new Color(redVal.get(), greenVal.get(), blueVal.get()));
+            thinkPanel.changeBackgroundColor(new Color(redVal.get(), greenVal.get(), blueVal.get()));
         }
         catch (NullPointerException ex) {
             displayErrorMessageBox(ERROR_NON_NUMERICAL_INPUT_MESSAGE, ERROR_DIALOG_BOX_TITLE);
@@ -45,8 +45,8 @@ public class AppController implements ActionListener {
             return;
         }
 
-        String predictedColor = predictColor(color);
-        displayPrediction(predictedColor);
+        String inventedColor = inventColor(color);
+        displayInvention(inventedColor);
     }
 
     private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IOException {
@@ -64,18 +64,18 @@ public class AppController implements ActionListener {
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    private String predictColor(double[] color) {
+    private String inventColor(double[] color) {
         double[] output = neuralNet.think(color);
-        String predictedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
-        return predictedColor;
+        String inventedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
+        return inventedColor;
     }
 
-    private void displayPrediction(String prediction) {
-        predictPanel.setPrediction(prediction);
-        if (prediction.equals("WHITE")) {
-            predictPanel.changeFontColor(Color.WHITE);
+    private void displayInvention(String invention) {
+        thinkPanel.setInvention(invention);
+        if (invention.equals("WHITE")) {
+            thinkPanel.changeFontColor(Color.WHITE);
         } else {
-            predictPanel.changeFontColor(Color.BLACK);
+            thinkPanel.changeFontColor(Color.BLACK);
         }
     }
 }

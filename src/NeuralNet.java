@@ -134,9 +134,4 @@ public class NeuralNet {
     private final double sigmoidDerivative(final double x) {
         return x * (1 - x);
     }
-
-    public static void main(String[] argv){
-        NeuralNet net = new NeuralNet();
-    }
-
 }

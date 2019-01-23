@@ -10,13 +10,13 @@ public class AppWindow extends JFrame {
     private final int WIDTH = 600;
     private final int HEIGHT = 400;
     private InputPanel inputPanel = new InputPanel();
-    private PredictPanel predictPanel = new PredictPanel();
+    private ThinkPanel thinkPanel = new ThinkPanel();
 
     public AppWindow(){
         setDefaultWindowProperties();
         add(inputPanel, BorderLayout.WEST);
-        predictPanel.attachControllerToPredictButton(new AppController(inputPanel, predictPanel));
-        add(predictPanel, BorderLayout.CENTER);
+        thinkPanel.attachControllerToThinkButton(new AppController(inputPanel, thinkPanel));
+        add(thinkPanel, BorderLayout.CENTER);
     }
 
     private void setDefaultWindowProperties() {
@@ -33,5 +33,4 @@ public class AppWindow extends JFrame {
             JFrame window = new AppWindow();
         });
     }
-
 }

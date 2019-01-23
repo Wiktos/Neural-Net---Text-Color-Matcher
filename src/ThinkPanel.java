@@ -5,24 +5,24 @@ import java.awt.event.ActionListener;
 /**
  * Created by Wiktor Łazarski on 23.01.2019.
  */
-public class PredictPanel extends JPanel {
+public class ThinkPanel extends JPanel {
 
-    private JButton predictBtn = new JButton("PREDICT");
-    private JLabel predictedValueLb = new JLabel("Predicted value : ");
+    private JButton thinkBtn = new JButton("THINK");
+    private JLabel inventedValueLb = new JLabel("Invented value : ");
 
-    public PredictPanel() {
+    public ThinkPanel() {
         setLayoutManagerProperties();
         setLabelProperties();
-        addComponentToGrid(predictBtn, BorderLayout.NORTH);
-        addComponentToGrid(predictedValueLb, BorderLayout.CENTER);
+        addComponentToGrid(thinkBtn, BorderLayout.NORTH);
+        addComponentToGrid(inventedValueLb, BorderLayout.CENTER);
     }
 
-    public void setPrediction(String prediction) {
-        predictedValueLb.setText("Predicted value : " + prediction);
+    public void setInvention(String prediction) {
+        inventedValueLb.setText("Predicted value : " + prediction);
     }
 
-    public void attachControllerToPredictButton(ActionListener listener) {
-        predictBtn.addActionListener(listener);
+    public void attachControllerToThinkButton(ActionListener listener) {
+        thinkBtn.addActionListener(listener);
     }
 
     public void changeBackgroundColor(Color color) {
@@ -32,11 +32,11 @@ public class PredictPanel extends JPanel {
     }
 
     public void changeFontColor(Color color){
-        predictedValueLb.setForeground(color);
+        inventedValueLb.setForeground(color);
     }
 
     private void setLabelProperties() {
-        predictedValueLb.setFont(new Font("TimesRoman", Font.PLAIN + Font.BOLD, 20));
+        inventedValueLb.setFont(new Font("TimesRoman", Font.PLAIN + Font.BOLD, 20));
     }
 
     private void setLayoutManagerProperties() {
