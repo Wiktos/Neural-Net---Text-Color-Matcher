@@ -9,10 +9,11 @@ public class NeuralNet {
 
     Output : First number indicate white second black
     */
-    private final double LEARNING_RATE = 0.8;
-    private final double[][] X = new double[][]{{1.0, 1.0, 1.0},
-                                            {0.282352, 0.282352, 0.282352}};
-    private final double[][] DESIRED_OUTPUT = new double[][]{{0.0, 1.0}, {1.0, 0.0}};
+    private final double LEARNING_RATE = 0.9;
+    private final double[][] X = new double[][]{{0.6, 0.6, 0.6},
+                                                {0.4, 0.4, 0.4}};
+    private final double[][] DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
+                                                             {1.0, 0.0}};
     //synapses
     private double[][] syn0 = new double[3][2];
     private double[][] syn1 = new double[2][2];
@@ -20,8 +21,8 @@ public class NeuralNet {
     public NeuralNet() {
         fillWeightSyn0();
         fillWeightSyn1();
-        for (int i = 0; i < 6000; i++) {
-            train(X[i & 1], DESIRED_OUTPUT[i & 1]);
+        for (int i = 0; i < 100000; i++) {
+            train(X[i % 2], DESIRED_OUTPUT[i % 2]);
         }
     }
 

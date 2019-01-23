@@ -31,9 +31,9 @@ public class AppController implements ActionListener {
 
         double[] color = new double[3];
         try{
-            color[0] = receiveColor(redVal) / 255;
-            color[1] = receiveColor(greenVal) / 255;
-            color[2] = receiveColor(blueVal) / 255;
+            color[0] = receiveColor(redVal) / 255.0;
+            color[1] = receiveColor(greenVal) / 255.0;
+            color[2] = receiveColor(blueVal) / 255.0;
             thinkPanel.changeBackgroundColor(new Color(redVal.get(), greenVal.get(), blueVal.get()));
         }
         catch (NullPointerException ex) {
