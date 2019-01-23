@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class NeuralNet {
 
     /*
@@ -11,9 +9,9 @@ public class NeuralNet {
 
     Output : First number indicate white second black
     */
-    private final double LEARNING_RATE = 0.1;
+    private final double LEARNING_RATE = 0.8;
     private final double[][] X = new double[][]{{1.0, 1.0, 1.0},
-                                            {0.0, 0.0, 0.0}};
+                                            {0.282352, 0.282352, 0.282352}};
     private final double[][] DESIRED_OUTPUT = new double[][]{{0.0, 1.0}, {1.0, 0.0}};
     //synapses
     private double[][] syn0 = new double[3][2];
@@ -22,9 +20,8 @@ public class NeuralNet {
     public NeuralNet() {
         fillWeightSyn0();
         fillWeightSyn1();
-        for (int i = 0; i < 10000; i++) {
-            train(X[0], DESIRED_OUTPUT[0]);
-            train(X[1], DESIRED_OUTPUT[1]);
+        for (int i = 0; i < 6000; i++) {
+            train(X[i & 1], DESIRED_OUTPUT[i & 1]);
         }
     }
 
@@ -40,11 +37,10 @@ public class NeuralNet {
         double[] hiddenLayer = computeHiddenLayer(X);
         double[] outputLayer = computeOutputLayer(hiddenLayer);
 
-        backpropagation(outputLayer, hiddenLayer, X, d);
+        backPropagation(outputLayer, hiddenLayer, X, d);
     }
 
     private double[] computeHiddenLayer(double[] X){
-        //compute hidden layer
         double[] hiddenLayer = new double[2];
         double sum = 0.0;
         for (int i = 0; i < X.length; i++) {
@@ -77,7 +73,7 @@ public class NeuralNet {
         return outputLayer;
     }
 
-    private void backpropagation(double[] outputLayer, double[] hiddenLayer, double[] X, double[] desiredOut) {
+    private void backPropagation(double[] outputLayer, double[] hiddenLayer, double[] X, double[] desiredOut) {
         double[] outputError = new double[2];
         outputError[0] = desiredOut[0] - outputLayer[0];
         outputError[1] = desiredOut[1] - outputLayer[1];
@@ -113,8 +109,6 @@ public class NeuralNet {
                 syn0[i][j] += LEARNING_RATE * syn0Delta[i][j];
             }
         }
-
-        System.out.println(Arrays.toString(outputLayer) + " err : " + Arrays.toString(outputError));
     }
 
     private void fillWeightSyn0(){

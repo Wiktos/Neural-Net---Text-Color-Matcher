@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -28,11 +29,12 @@ public class AppController implements ActionListener {
         Optional<Integer> greenVal = inputPanel.greenValue();
         Optional<Integer> blueVal = inputPanel.blueValue();
 
-        double[] colors = new double[3];
+        double[] color = new double[3];
         try{
-            colors[0] = receiveColor(redVal);
-            colors[1] = receiveColor(greenVal);
-            colors[2] = receiveColor(blueVal);
+            color[0] = receiveColor(redVal) / 255;
+            color[1] = receiveColor(greenVal) / 255;
+            color[2] = receiveColor(blueVal) / 255;
+            predictPanel.changeBackgroundColor(new Color(redVal.get(), greenVal.get(), blueVal.get()));
         }
         catch (NullPointerException ex) {
             displayErrorMessageBox(ERROR_NON_NUMERICAL_INPUT_MESSAGE, ERROR_DIALOG_BOX_TITLE);
@@ -43,12 +45,11 @@ public class AppController implements ActionListener {
             return;
         }
 
-        double[] output = neuralNet.think(colors);
-        String predictedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
-        predictPanel.setPrediction(predictedColor);
+        String predictedColor = predictColor(color);
+        displayPrediction(predictedColor);
     }
 
-    private double receiveColor(Optional<Integer> inputColor) throws NullPointerException, IOException {
+    private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IOException {
         if(!inputColor.isPresent()){
             throw new NullPointerException();
         }
@@ -61,5 +62,20 @@ public class AppController implements ActionListener {
 
     private void displayErrorMessageBox(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
+    }
+
+    private String predictColor(double[] color) {
+        double[] output = neuralNet.think(color);
+        String predictedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
+        return predictedColor;
+    }
+
+    private void displayPrediction(String prediction) {
+        predictPanel.setPrediction(prediction);
+        if (prediction.equals("WHITE")) {
+            predictPanel.changeFontColor(Color.WHITE);
+        } else {
+            predictPanel.changeFontColor(Color.BLACK);
+        }
     }
 }

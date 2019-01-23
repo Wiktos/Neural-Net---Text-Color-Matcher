@@ -12,8 +12,9 @@ public class PredictPanel extends JPanel {
 
     public PredictPanel() {
         setLayoutManagerProperties();
-        addComponentToGrid(predictBtn);
-        addComponentToGrid(predictedValueLb);
+        setLabelProperties();
+        addComponentToGrid(predictBtn, BorderLayout.NORTH);
+        addComponentToGrid(predictedValueLb, BorderLayout.CENTER);
     }
 
     public void setPrediction(String prediction) {
@@ -24,14 +25,28 @@ public class PredictPanel extends JPanel {
         predictBtn.addActionListener(listener);
     }
 
-    private void setLayoutManagerProperties() {
-        LayoutManager gridLayout = new GridLayout(2,1);
-        setLayout(gridLayout);
+    public void changeBackgroundColor(Color color) {
+        for(Component comp : getComponents()) {
+            comp.setBackground(color);
+        }
     }
 
-    private void addComponentToGrid(JComponent component) {
+    public void changeFontColor(Color color){
+        predictedValueLb.setForeground(color);
+    }
+
+    private void setLabelProperties() {
+        predictedValueLb.setFont(new Font("TimesRoman", Font.PLAIN + Font.BOLD, 20));
+    }
+
+    private void setLayoutManagerProperties() {
+        LayoutManager borderLayout = new BorderLayout();
+        setLayout(borderLayout);
+    }
+
+    private void addComponentToGrid(JComponent component, String borderLayoutPosition) {
         JPanel panel = new JPanel();
         panel.add(component);
-        add(panel);
+        add(panel, borderLayoutPosition);
     }
 }
