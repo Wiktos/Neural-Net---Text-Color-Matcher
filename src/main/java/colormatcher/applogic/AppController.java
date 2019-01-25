@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Optional;
 
 /**
@@ -41,7 +40,7 @@ public class AppController implements ActionListener {
             displayErrorMessageBox(ERROR_NON_NUMERICAL_INPUT_MESSAGE, ERROR_DIALOG_BOX_TITLE);
             return;
         }
-        catch (IOException ex) {
+        catch (IllegalArgumentException ex) {
             displayErrorMessageBox(ERROR_RANGE_MESSAGE, ERROR_DIALOG_BOX_TITLE);
             return;
         }
@@ -50,13 +49,13 @@ public class AppController implements ActionListener {
         displayInvention(inventedColor, new Color(redVal.get(), greenVal.get(), blueVal.get()));
     }
 
-    private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IOException {
+    private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IllegalArgumentException {
         if(!inputColor.isPresent()){
             throw new NullPointerException();
         }
         int color = inputColor.get();
         if(color < 0 || color > 255){
-            throw new IOException();
+            throw new IllegalArgumentException();
         }
         return color;
     }

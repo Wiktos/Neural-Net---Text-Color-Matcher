@@ -16,14 +16,15 @@ public class NeuralNet {
                                                 {0.4, 0.4, 0.4}};
     private final double[][] DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
                                                              {1.0, 0.0}};
-    //synapses
-    private double[][] syn0 = new double[3][2];
-    private double[][] syn1 = new double[2][2];
+
+    private Synapse syn0;
+    private Synapse syn1;
 
     public NeuralNet() {
-        fillWeightSyn0();
-        fillWeightSyn1();
-        for (int i = 0; i < 100000; i++) {
+        syn0 = new Synapse(3, 2);
+        syn1 = new Synapse(2, 2);
+
+        for (int i = 0; i < 6000; i++) {
             train(X[i % 2], DESIRED_OUTPUT[i % 2]);
         }
     }
@@ -34,7 +35,6 @@ public class NeuralNet {
 
         return outputLayer;
     }
-
 
     private void train(double[] X, double[] d) {
         double[] hiddenLayer = computeHiddenLayer(X);
@@ -47,12 +47,12 @@ public class NeuralNet {
         double[] hiddenLayer = new double[2];
         double sum = 0.0;
         for (int i = 0; i < X.length; i++) {
-            sum += X[i] * syn0[i][0];
+            sum += X[i] * syn0.getWeight(i, 0);
         }
         hiddenLayer[0] = sigmoid(sum);
         sum = 0.0;
         for (int i = 0; i < X.length; i++) {
-            sum += X[i] * syn0[i][1];
+            sum += X[i] * syn0.getWeight(i, 1);
         }
         hiddenLayer[1] = sigmoid(sum);
 
@@ -63,13 +63,13 @@ public class NeuralNet {
         double[] outputLayer = new double[2];
         double sum = 0.0;
         for(int i = 0; i < hiddenLayer.length; i++){
-            sum += hiddenLayer[i] * syn1[i][0];
+            sum += hiddenLayer[i] * syn1.getWeight(i, 0);
         }
 
         outputLayer[0] = sigmoid(sum);
         sum = 0.0;
         for(int i = 0; i < hiddenLayer.length; i++){
-            sum += hiddenLayer[i] * syn1[i][1];
+            sum += hiddenLayer[i] * syn1.getWeight(i, 1);
         }
         outputLayer[1] = sigmoid(sum);
 
@@ -91,41 +91,25 @@ public class NeuralNet {
             }
         }
 
-        double[] hiddenDelta = new double[]{((outputDelta[0] * syn1[0][0] + outputDelta[1] * syn1[0][1]) * sigmoidDerivative(hiddenLayer[0])),
-                                             ((outputDelta[0] * syn1[1][0] + outputDelta[1] * syn1[1][1]) * sigmoidDerivative(hiddenLayer[1]))};
+        double[] hiddenDelta = new double[]{((outputDelta[0] * syn1.getWeight(0, 0) + outputDelta[1] * syn1.getWeight(0, 1)) * sigmoidDerivative(hiddenLayer[0])),
+                                             ((outputDelta[0] * syn1.getWeight(1, 0) + outputDelta[1] * syn1.getWeight(1, 1)) * sigmoidDerivative(hiddenLayer[1]))};
 
         double[][] syn0Delta = new double[3][2];
-        for (int i = 0; i < syn1.length; i++) {
-            for (int j = 0; j < syn1[i].length; j++) {
+        for (int i = 0; i < syn1.getRow(); i++) {
+            for (int j = 0; j < syn1.getCol(); j++) {
                 syn0Delta[i][j] = hiddenDelta[j] * X[i];
             }
         }
 
-        for (int i = 0; i < syn1.length; i++) {
-            for (int j = 0; j < syn1[i].length; j++) {
-                syn1[i][j] += LEARNING_RATE * syn1Delta[i][j];
+        for (int i = 0; i < syn1.getRow(); i++) {
+            for (int j = 0; j < syn1.getCol(); j++) {
+                syn1.setWeight(i, j,  syn1.getWeight(i, j) + LEARNING_RATE * syn1Delta[i][j]);
             }
         }
 
-        for (int i = 0; i < syn0.length; i++) {
-            for (int j = 0; j < syn0[i].length; j++) {
-                syn0[i][j] += LEARNING_RATE * syn0Delta[i][j];
-            }
-        }
-    }
-
-    private void fillWeightSyn0(){
-        for(int i = 0; i < syn0.length; i++) {
-            for(int j = 0; j < syn0[i].length; j++) {
-                syn0[i][j] = 2 * Math.random() - 1;
-            }
-        }
-    }
-
-    private void fillWeightSyn1(){
-        for(int i = 0; i < syn1.length; i++) {
-            for(int j = 0; j < syn1[i].length; j++) {
-                syn1[i][j] = 2 * Math.random() - 1;
+        for (int i = 0; i < syn0.getRow(); i++) {
+            for (int j = 0; j < syn0.getCol(); j++) {
+                syn0.setWeight(i, j,  syn0.getWeight(i, j) + LEARNING_RATE * syn0Delta[i][j]);
             }
         }
     }

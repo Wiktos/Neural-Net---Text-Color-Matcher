@@ -18,6 +18,5 @@ public class NeuralNetResultInterpreter {
 
     private static NeuralNetResultInterpreter ourInstance = new NeuralNetResultInterpreter();
 
-    private NeuralNetResultInterpreter() {
-    }
+    private NeuralNetResultInterpreter() { }
 }
