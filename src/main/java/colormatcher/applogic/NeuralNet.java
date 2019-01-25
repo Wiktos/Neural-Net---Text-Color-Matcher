@@ -20,7 +20,7 @@ public class NeuralNet {
     private final double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
                                                             {1.0, 0.0}};
 
-    private final NeuralNetTrainingDataset trainingDataset = new NeuralNetTrainingDataset(STANDARD_TRAINING_INPUTS, STANDARD_DESIRED_OUTPUT);
+    private NeuralNetTrainingDataset trainingDataset = new NeuralNetTrainingDataset(STANDARD_TRAINING_INPUTS, STANDARD_DESIRED_OUTPUT);
 
 
     private Synapse syn0;
@@ -30,7 +30,16 @@ public class NeuralNet {
         syn0 = new Synapse(3, 2);
         syn1 = new Synapse(2, 2);
 
-        performFullTreining(6000);
+        performFullTraining(6000);
+    }
+
+    public NeuralNet(NeuralNetTrainingDataset trainingDataset) {
+        syn0 = new Synapse(3, 2);
+        syn1 = new Synapse(2, 2);
+
+        this.trainingDataset = trainingDataset;
+
+        performFullTraining(6000);
     }
 
     public NeuralNetLayer think(double[] X) {
@@ -40,7 +49,7 @@ public class NeuralNet {
         return outputLayer;
     }
 
-    private void performFullTreining(int iter) {
+    private void performFullTraining(int iter) {
         if(iter < 0) {
             throw new IllegalArgumentException("Number of iteration less than 0");
         }
