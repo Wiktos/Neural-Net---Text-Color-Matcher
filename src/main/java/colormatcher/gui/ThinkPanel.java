@@ -1,6 +1,6 @@
 package main.java.colormatcher.gui;
 
-import main.java.colormatcher.applogic.ThinkablePanel;
+import main.java.colormatcher.controller.ThinkablePanel;
 
 import javax.swing.*;
 import java.awt.*;

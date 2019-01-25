@@ -1,8 +1,9 @@
-package main.java.colormatcher.applogic;
+package main.java.colormatcher.model;
 
 import javafx.util.Pair;
+import main.java.colormatcher.controller.AI;
 
-public class NeuralNet {
+public class NeuralNet implements AI {
 
     /*
     Training data
@@ -31,7 +32,7 @@ public class NeuralNet {
         performFullTraining(6000);
     }
 
-    public NeuralNet(NeuralNetTrainingDataset trainingDataset) {
+    public NeuralNet(final NeuralNetTrainingDataset trainingDataset) {
         syn0 = new Synapse(3, 2);
         syn1 = new Synapse(2, 2);
 
@@ -40,14 +41,14 @@ public class NeuralNet {
         performFullTraining(6000);
     }
 
-    public NeuralNetLayer think(Color color) {
+    public NeuralNetLayer think(final Color color) {
         NeuralNetLayer hiddenLayer = computeHiddenLayer(color);
         NeuralNetLayer outputLayer = computeOutputLayer(hiddenLayer);
 
         return outputLayer;
     }
 
-    private void performFullTraining(int iter) {
+    private void performFullTraining(final int iter) {
         if(iter < 0) {
             throw new IllegalArgumentException("Number of iteration less than 0");
         }
@@ -64,7 +65,7 @@ public class NeuralNet {
         backPropagation(outputLayer, hiddenLayer, inputWithDesiredOutput);
     }
 
-    private NeuralNetLayer computeHiddenLayer(Color X){
+    private NeuralNetLayer computeHiddenLayer(final Color X){
         NeuralNetLayer retv = new NeuralNetLayer(2);
 
         double sum = dotProduct(X, syn0, 0);
@@ -75,7 +76,7 @@ public class NeuralNet {
         return retv;
     }
 
-    private NeuralNetLayer computeOutputLayer(NeuralNetLayer hiddenLayer){
+    private NeuralNetLayer computeOutputLayer(final NeuralNetLayer hiddenLayer){
         NeuralNetLayer retv = new NeuralNetLayer(2);
 
         double sum = dotProduct(hiddenLayer, syn1, 0);
@@ -87,7 +88,7 @@ public class NeuralNet {
         return retv;
     }
 
-    private void backPropagation(NeuralNetLayer outputLayer, NeuralNetLayer hiddenLayer, Pair<Color, double[]> inputAndDesiredOut ) {
+    private void backPropagation(final NeuralNetLayer outputLayer, final NeuralNetLayer hiddenLayer, Pair<Color, double[]> inputAndDesiredOut ) {
         double[] X = inputAndDesiredOut.getKey().asArray();
         double[] desiredOut = inputAndDesiredOut.getValue();
 
@@ -128,7 +129,7 @@ public class NeuralNet {
         }
     }
 
-    private double dotProduct(Color input, Synapse syn, int synNodeIdx) {
+    private double dotProduct(Color input, final Synapse syn, final int synNodeIdx) {
         double[] colArr = input.asArray();
         double sum = 0.0;
         for (int i = 0; i < colArr.length; i++) {
@@ -137,7 +138,7 @@ public class NeuralNet {
         return sum;
     }
 
-    private double dotProduct(NeuralNetLayer layer, Synapse syn, int synNodeIdx) {
+    private double dotProduct(NeuralNetLayer layer, final Synapse syn, final int synNodeIdx) {
         double sum = 0.0;
         for (int i = 0; i < layer.length(); i++) {
             sum += layer.getNodeValue(i) * syn.getWeight(i, synNodeIdx);

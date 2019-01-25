@@ -1,4 +1,4 @@
-package main.java.colormatcher.applogic;
+package main.java.colormatcher.model;
 
 import javafx.util.Pair;
 

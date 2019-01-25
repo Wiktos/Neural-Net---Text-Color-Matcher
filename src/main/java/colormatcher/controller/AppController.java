@@ -1,4 +1,9 @@
-package main.java.colormatcher.applogic;
+package main.java.colormatcher.controller;
+
+import main.java.colormatcher.model.Color;
+import main.java.colormatcher.model.NeuralNet;
+import main.java.colormatcher.model.NeuralNetLayer;
+import main.java.colormatcher.model.NeuralNetResultInterpreter;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +21,7 @@ public class AppController implements ActionListener {
 
     private ColorInputable inputPanel;
     private ThinkablePanel thinkPanel;
-    private NeuralNet neuralNet = new NeuralNet();
+    private AI ai = new NeuralNet();
 
     public AppController(ColorInputable inputPanel, ThinkablePanel thinkPanel) {
         this.inputPanel = inputPanel;
@@ -46,6 +51,10 @@ public class AppController implements ActionListener {
         displayInvention(inventedColor, new java.awt.Color(redVal.get(), greenVal.get(), blueVal.get()));
     }
 
+    public void setAI(AI ai) {
+        this.ai = ai;
+    }
+
     private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IllegalArgumentException {
         if(!inputColor.isPresent()){
             throw new NullPointerException();
@@ -62,7 +71,7 @@ public class AppController implements ActionListener {
     }
 
     private String inventColor(Color color) {
-        NeuralNetLayer output = neuralNet.think(color);
+        NeuralNetLayer output = ai.think(color);
         String inventedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
         return inventedColor;
     }

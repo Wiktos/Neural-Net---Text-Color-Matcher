@@ -1,4 +1,4 @@
-package main.java.colormatcher.applogic;
+package main.java.colormatcher.model;
 
 /**
  * Created by Wiktor Łazarski on 25.01.2019.
