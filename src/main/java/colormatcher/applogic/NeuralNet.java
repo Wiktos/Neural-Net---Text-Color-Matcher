@@ -29,70 +29,70 @@ public class NeuralNet {
         }
     }
 
-    public double[] think(double[] X) {
-        double[] hiddenLayer = computeHiddenLayer(X);
-        double[] outputLayer = computeOutputLayer(hiddenLayer);
+    public NeuralNetLayer think(double[] X) {
+        NeuralNetLayer hiddenLayer = computeHiddenLayer(X);
+        NeuralNetLayer outputLayer = computeOutputLayer(hiddenLayer);
 
         return outputLayer;
     }
 
     private void train(double[] X, double[] d) {
-        double[] hiddenLayer = computeHiddenLayer(X);
-        double[] outputLayer = computeOutputLayer(hiddenLayer);
+        NeuralNetLayer hiddenLayer = computeHiddenLayer(X);
+        NeuralNetLayer outputLayer = computeOutputLayer(hiddenLayer);
 
         backPropagation(outputLayer, hiddenLayer, X, d);
     }
 
-    private double[] computeHiddenLayer(double[] X){
-        double[] hiddenLayer = new double[2];
+    private NeuralNetLayer computeHiddenLayer(double[] X){
+        NeuralNetLayer retv = new NeuralNetLayer(2);
         double sum = 0.0;
         for (int i = 0; i < X.length; i++) {
             sum += X[i] * syn0.getWeight(i, 0);
         }
-        hiddenLayer[0] = sigmoid(sum);
+        retv.setNodeValue(0, sigmoid(sum));
         sum = 0.0;
         for (int i = 0; i < X.length; i++) {
             sum += X[i] * syn0.getWeight(i, 1);
         }
-        hiddenLayer[1] = sigmoid(sum);
+        retv.setNodeValue(1, sigmoid(sum));
 
-        return hiddenLayer;
+        return retv;
     }
 
-    private double[] computeOutputLayer(double[] hiddenLayer){
-        double[] outputLayer = new double[2];
+    private NeuralNetLayer computeOutputLayer(NeuralNetLayer hiddenLayer){
+        NeuralNetLayer retv = new NeuralNetLayer(2);
         double sum = 0.0;
-        for(int i = 0; i < hiddenLayer.length; i++){
-            sum += hiddenLayer[i] * syn1.getWeight(i, 0);
+        for(int i = 0; i < hiddenLayer.length(); i++){
+            sum += hiddenLayer.getNodeValue(i) * syn1.getWeight(i, 0);
         }
+        retv.setNodeValue(0, sigmoid(sum));
 
-        outputLayer[0] = sigmoid(sum);
         sum = 0.0;
-        for(int i = 0; i < hiddenLayer.length; i++){
-            sum += hiddenLayer[i] * syn1.getWeight(i, 1);
+        for(int i = 0; i < hiddenLayer.length(); i++){
+            sum += hiddenLayer.getNodeValue(i) * syn1.getWeight(i, 1);
         }
-        outputLayer[1] = sigmoid(sum);
+        retv.setNodeValue(1, sigmoid(sum));
 
-        return outputLayer;
+        return retv;
     }
 
-    private void backPropagation(double[] outputLayer, double[] hiddenLayer, double[] X, double[] desiredOut) {
+    private void backPropagation(NeuralNetLayer outputLayer, NeuralNetLayer hiddenLayer, double[] X, double[] desiredOut) {
         double[] outputError = new double[2];
-        outputError[0] = desiredOut[0] - outputLayer[0];
-        outputError[1] = desiredOut[1] - outputLayer[1];
+        outputError[0] = desiredOut[0] - outputLayer.getNodeValue(0);
+        outputError[1] = desiredOut[1] - outputLayer.getNodeValue(1);
 
-        double[] outputDelta = new double[]{(outputError[0] * sigmoidDerivative(outputLayer[0])),
-                (outputError[1] * sigmoidDerivative(outputLayer[1]))};
+        double[] outputDelta = new double[]{(outputError[0] * sigmoidDerivative(outputLayer.getNodeValue(0))),
+                (outputError[1] * sigmoidDerivative(outputLayer.getNodeValue(1)))};
 
         double[][] syn1Delta = new double[2][2];
         for(int i = 0; i < syn1Delta.length; i++) {
             for (int j = 0; j < syn1Delta[i].length; j++) {
-                syn1Delta[j][i] = outputDelta[i] * hiddenLayer[j];
+                syn1Delta[j][i] = outputDelta[i] * hiddenLayer.getNodeValue(j);
             }
         }
 
-        double[] hiddenDelta = new double[]{((outputDelta[0] * syn1.getWeight(0, 0) + outputDelta[1] * syn1.getWeight(0, 1)) * sigmoidDerivative(hiddenLayer[0])),
-                                             ((outputDelta[0] * syn1.getWeight(1, 0) + outputDelta[1] * syn1.getWeight(1, 1)) * sigmoidDerivative(hiddenLayer[1]))};
+        double[] hiddenDelta = new double[]{((outputDelta[0] * syn1.getWeight(0, 0) + outputDelta[1] * syn1.getWeight(0, 1)) * sigmoidDerivative(hiddenLayer.getNodeValue(0))),
+                                             ((outputDelta[0] * syn1.getWeight(1, 0) + outputDelta[1] * syn1.getWeight(1, 1)) * sigmoidDerivative(hiddenLayer.getNodeValue(1)))};
 
         double[][] syn0Delta = new double[3][2];
         for (int i = 0; i < syn1.getRow(); i++) {

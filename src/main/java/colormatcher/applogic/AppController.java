@@ -65,7 +65,7 @@ public class AppController implements ActionListener {
     }
 
     private String inventColor(double[] color) {
-        double[] output = neuralNet.think(color);
+        NeuralNetLayer output = neuralNet.think(color);
         String inventedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
         return inventedColor;
     }

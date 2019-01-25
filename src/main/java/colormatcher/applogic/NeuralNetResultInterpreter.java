@@ -12,8 +12,8 @@ public class NeuralNetResultInterpreter {
         return ourInstance;
     }
 
-    public String interpret(double[] neuralNetOutput) {
-        return neuralNetOutput[0] > neuralNetOutput[1] ? WHITE : BLACK;
+    public String interpret(NeuralNetLayer neuralNetOutput) {
+        return neuralNetOutput.getNodeValue(0) > neuralNetOutput.getNodeValue(1) ? WHITE : BLACK;
     }
 
     private static NeuralNetResultInterpreter ourInstance = new NeuralNetResultInterpreter();
