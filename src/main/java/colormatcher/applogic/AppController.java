@@ -70,7 +70,7 @@ public class AppController implements ActionListener {
     private void displayInvention(String invention, java.awt.Color background) {
         thinkPanel.setInvention(invention);
         thinkPanel.changeBackgroundColor(background);
-        if (invention.equals("WHITE")) {
+        if (invention.equals(NeuralNetResultInterpreter.WHITE)) {
             thinkPanel.changeFontColor(java.awt.Color.WHITE);
         } else {
             thinkPanel.changeFontColor(java.awt.Color.BLACK);

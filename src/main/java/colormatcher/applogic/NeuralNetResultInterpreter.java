@@ -5,8 +5,8 @@ package main.java.colormatcher.applogic;
  */
 public class NeuralNetResultInterpreter {
 
-    private static final String WHITE = "WHITE";
-    private static final String BLACK = "BLACK";
+    public static final String WHITE = "WHITE";
+    public static final String BLACK = "BLACK";
 
     public static NeuralNetResultInterpreter getInstance() {
         return ourInstance;

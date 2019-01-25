@@ -19,6 +19,10 @@ public class Color {
         rgb = new double[]{r, g, b};
     }
 
+    public Color(java.awt.Color col) {
+        rgb = new double[]{col.getRed() / 255.0, col.getGreen() / 255.0, col.getBlue() / 255.0};
+    }
+
     public double red(){
         return rgb[RED_INDEX];
     }
