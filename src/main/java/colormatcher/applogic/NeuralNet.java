@@ -1,5 +1,7 @@
 package main.java.colormatcher.applogic;
 
+import javafx.util.Pair;
+
 public class NeuralNet {
 
     /*
@@ -12,10 +14,14 @@ public class NeuralNet {
     Output : First number indicate white second black
     */
     private final double LEARNING_RATE = 0.9;
-    private final double[][] X = new double[][]{{0.6, 0.6, 0.6},
+
+    private final static double[][] STANDARD_TRAINING_INPUTS = new double[][]{{0.6, 0.6, 0.6},
                                                 {0.4, 0.4, 0.4}};
-    private final double[][] DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
-                                                             {1.0, 0.0}};
+    private final double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
+                                                            {1.0, 0.0}};
+
+    private final NeuralNetTrainingDataset trainingDataset = new NeuralNetTrainingDataset(STANDARD_TRAINING_INPUTS, STANDARD_DESIRED_OUTPUT);
+
 
     private Synapse syn0;
     private Synapse syn1;
@@ -24,9 +30,7 @@ public class NeuralNet {
         syn0 = new Synapse(3, 2);
         syn1 = new Synapse(2, 2);
 
-        for (int i = 0; i < 6000; i++) {
-            train(X[i % 2], DESIRED_OUTPUT[i % 2]);
-        }
+        performFullTreining(6000);
     }
 
     public NeuralNetLayer think(double[] X) {
@@ -36,24 +40,29 @@ public class NeuralNet {
         return outputLayer;
     }
 
-    private void train(double[] X, double[] d) {
-        NeuralNetLayer hiddenLayer = computeHiddenLayer(X);
+    private void performFullTreining(int iter) {
+        if(iter < 0) {
+            throw new IllegalArgumentException("Number of iteration less than 0");
+        }
+
+        for (int i = 0; i < iter; i++) {
+            oneTraining(trainingDataset.getPairOfInputAndDesiredOutput(i & 1));
+        }
+    }
+
+    private void oneTraining(Pair<double[], double[]> inputWithDesiredOutput) {
+        NeuralNetLayer hiddenLayer = computeHiddenLayer(inputWithDesiredOutput.getKey());
         NeuralNetLayer outputLayer = computeOutputLayer(hiddenLayer);
 
-        backPropagation(outputLayer, hiddenLayer, X, d);
+        backPropagation(outputLayer, hiddenLayer, inputWithDesiredOutput);
     }
 
     private NeuralNetLayer computeHiddenLayer(double[] X){
         NeuralNetLayer retv = new NeuralNetLayer(2);
-        double sum = 0.0;
-        for (int i = 0; i < X.length; i++) {
-            sum += X[i] * syn0.getWeight(i, 0);
-        }
+
+        double sum = dotProduct(X, syn0, 0);
         retv.setNodeValue(0, sigmoid(sum));
-        sum = 0.0;
-        for (int i = 0; i < X.length; i++) {
-            sum += X[i] * syn0.getWeight(i, 1);
-        }
+        sum = dotProduct(X, syn0, 1);
         retv.setNodeValue(1, sigmoid(sum));
 
         return retv;
@@ -61,22 +70,20 @@ public class NeuralNet {
 
     private NeuralNetLayer computeOutputLayer(NeuralNetLayer hiddenLayer){
         NeuralNetLayer retv = new NeuralNetLayer(2);
-        double sum = 0.0;
-        for(int i = 0; i < hiddenLayer.length(); i++){
-            sum += hiddenLayer.getNodeValue(i) * syn1.getWeight(i, 0);
-        }
+
+        double sum = dotProduct(hiddenLayer, syn1, 0);
         retv.setNodeValue(0, sigmoid(sum));
 
-        sum = 0.0;
-        for(int i = 0; i < hiddenLayer.length(); i++){
-            sum += hiddenLayer.getNodeValue(i) * syn1.getWeight(i, 1);
-        }
+        sum = dotProduct(hiddenLayer, syn1, 1);
         retv.setNodeValue(1, sigmoid(sum));
 
         return retv;
     }
 
-    private void backPropagation(NeuralNetLayer outputLayer, NeuralNetLayer hiddenLayer, double[] X, double[] desiredOut) {
+    private void backPropagation(NeuralNetLayer outputLayer, NeuralNetLayer hiddenLayer, Pair<double[], double[]> inputAndDesiredOut ) {
+        double[] X = inputAndDesiredOut.getKey();
+        double[] desiredOut = inputAndDesiredOut.getValue();
+
         double[] outputError = new double[2];
         outputError[0] = desiredOut[0] - outputLayer.getNodeValue(0);
         outputError[1] = desiredOut[1] - outputLayer.getNodeValue(1);
@@ -114,11 +121,27 @@ public class NeuralNet {
         }
     }
 
-    private final double sigmoid(final double x) {
+    private double dotProduct(double[] input, Synapse syn, int synNodeIdx) {
+        double sum = 0.0;
+        for (int i = 0; i < input.length; i++) {
+            sum += input[i] * syn0.getWeight(i, synNodeIdx);
+        }
+        return sum;
+    }
+
+    private double dotProduct(NeuralNetLayer layer, Synapse syn, int synNodeIdx) {
+        double sum = 0.0;
+        for (int i = 0; i < layer.length(); i++) {
+            sum += layer.getNodeValue(i) * syn.getWeight(i, synNodeIdx);
+        }
+        return sum;
+    }
+
+    private double sigmoid(final double x) {
         return 1 / (1 + Math.exp(-x));
     }
 
-    private final double sigmoidDerivative(final double x) {
+    private double sigmoidDerivative(final double x) {
         return x * (1 - x);
     }
 }
