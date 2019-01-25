@@ -1,5 +1,9 @@
 package main.java.colormatcher.model;
 
+/*
+
+ */
+
 public class Synapse {
 
     private double[] weights;

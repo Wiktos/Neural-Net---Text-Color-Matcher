@@ -3,19 +3,18 @@ package main.java.colormatcher.model;
 import javafx.util.Pair;
 import main.java.colormatcher.controller.AI;
 
-/**
- *<pre>Neural net class is a main class responsible for predicting the color output based on a given RGB value of input color.
- *
- *Input layer : Colors coded using values RGB, which are in range [0, 1]
- *              [0.0, 0.0, 0.0] - means black color
- *              [1.0, 1.0, 1.0] - means white color
- *
- *Output layer : There are two nodes in the output layer, which means that one will always be active.
- *               First node represents white color.
- *               Second node represents black color.</pre>
- *
- * @author Wiktor \u0141azarski
- *
+/*
+ Neural net class is a main class responsible for predicting the color output based on a given RGB value of input color.
+
+ Input layer : Colors coded using values RGB, which are in range [0, 1]
+               [0.0, 0.0, 0.0] - means black color
+               [1.0, 1.0, 1.0] - means white color
+
+ Output layer : There are two nodes in the output layer, which means that one will always be active.
+                First node represents white color.
+                Second node represents black color.</pre>
+
+ by Wiktor Łazarski
  */
 public class NeuralNet implements AI {
 
