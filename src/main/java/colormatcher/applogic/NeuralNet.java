@@ -13,15 +13,13 @@ public class NeuralNet {
 
     Output : First number indicate white second black
     */
-    private final double LEARNING_RATE = 0.9;
-
     private final static Color[] STANDARD_TRAINING_INPUTS = new Color[]{new Color(0.6, 0.6, 0.6),
                                                 new Color(0.4, 0.4, 0.4)};
     private final double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
                                                             {1.0, 0.0}};
 
+    private final double learningRate = 0.9;
     private NeuralNetTrainingDataset trainingDataset = new NeuralNetTrainingDataset(STANDARD_TRAINING_INPUTS, STANDARD_DESIRED_OUTPUT);
-
 
     private Synapse syn0;
     private Synapse syn1;
@@ -119,13 +117,13 @@ public class NeuralNet {
 
         for (int i = 0; i < syn1.getRow(); i++) {
             for (int j = 0; j < syn1.getCol(); j++) {
-                syn1.setWeight(i, j,  syn1.getWeight(i, j) + LEARNING_RATE * syn1Delta[i][j]);
+                syn1.setWeight(i, j,  syn1.getWeight(i, j) + learningRate * syn1Delta[i][j]);
             }
         }
 
         for (int i = 0; i < syn0.getRow(); i++) {
             for (int j = 0; j < syn0.getCol(); j++) {
-                syn0.setWeight(i, j,  syn0.getWeight(i, j) + LEARNING_RATE * syn0Delta[i][j]);
+                syn0.setWeight(i, j,  syn0.getWeight(i, j) + learningRate * syn0Delta[i][j]);
             }
         }
     }
