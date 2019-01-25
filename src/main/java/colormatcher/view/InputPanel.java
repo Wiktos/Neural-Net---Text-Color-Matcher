@@ -1,4 +1,4 @@
-package main.java.colormatcher.gui;
+package main.java.colormatcher.view;
 
 import main.java.colormatcher.controller.ColorInputable;
 
@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Optional;
 
-/**
- * Created by Wiktor Łazarski on 23.01.2019.
- */
 public class InputPanel extends JPanel implements ColorInputable {
 
     private SingleInputValue red = new SingleInputValue("RED VALUE");

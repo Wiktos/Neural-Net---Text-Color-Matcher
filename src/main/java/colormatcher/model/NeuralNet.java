@@ -3,21 +3,26 @@ package main.java.colormatcher.model;
 import javafx.util.Pair;
 import main.java.colormatcher.controller.AI;
 
+/**
+ *<pre>Neural net class is a main class responsible for predicting the color output based on a given RGB value of input color.
+ *
+ *Input layer : Colors coded using values RGB, which are in range [0, 1]
+ *              [0.0, 0.0, 0.0] - means black color
+ *              [1.0, 1.0, 1.0] - means white color
+ *
+ *Output layer : There are two nodes in the output layer, which means that one will always be active.
+ *               First node represents white color.
+ *               Second node represents black color.</pre>
+ *
+ * @author Wiktor \u0141azarski
+ *
+ */
 public class NeuralNet implements AI {
 
-    /*
-    Training data
-
-    Input : Colors are coded using values RGB which are in range [0, 1]
-            3 zeros means black
-            3 ones means white
-
-    Output : First number indicate white second black
-    */
     private final static Color[] STANDARD_TRAINING_INPUTS = new Color[]{new Color(0.6, 0.6, 0.6),
-                                                new Color(0.4, 0.4, 0.4)};
+                                                                        new Color(0.4, 0.4, 0.4)};
     private final double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
-                                                            {1.0, 0.0}};
+                                                                      {1.0, 0.0}};
 
     private final double learningRate = 0.9;
     private NeuralNetTrainingDataset trainingDataset = new NeuralNetTrainingDataset(STANDARD_TRAINING_INPUTS, STANDARD_DESIRED_OUTPUT);

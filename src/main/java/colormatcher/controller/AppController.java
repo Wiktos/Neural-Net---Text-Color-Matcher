@@ -10,9 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Optional;
 
-/**
- * Created by Wiktor Łazarski on 23.01.2019.
- */
 public class AppController implements ActionListener {
 
     private static final String ERROR_DIALOG_BOX_TITLE = "Input error";

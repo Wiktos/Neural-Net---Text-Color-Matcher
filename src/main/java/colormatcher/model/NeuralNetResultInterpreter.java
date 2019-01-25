@@ -1,8 +1,5 @@
 package main.java.colormatcher.model;
 
-/**
- * Created by Wiktor Łazarski on 23.01.2019.
- */
 public class NeuralNetResultInterpreter {
 
     public static final String WHITE = "WHITE";

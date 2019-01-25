@@ -1,4 +1,4 @@
-package main.java.colormatcher.gui;
+package main.java.colormatcher.view;
 
 import main.java.colormatcher.controller.ThinkablePanel;
 
@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-/**
- * Created by Wiktor Łazarski on 23.01.2019.
- */
 public class ThinkPanel extends JPanel implements ThinkablePanel {
 
     private JButton thinkBtn = new JButton("THINK");

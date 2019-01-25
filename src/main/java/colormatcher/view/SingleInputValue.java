@@ -1,11 +1,8 @@
-package main.java.colormatcher.gui;
+package main.java.colormatcher.view;
 
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by Wiktor Łazarski on 23.01.2019.
- */
 public class SingleInputValue extends JPanel{
 
     private JLabel description;
