@@ -23,8 +23,7 @@ public class SingleInputValue extends JPanel{
 
     public Integer getData() {
         try {
-            int retVal = Integer.parseInt(inputTextField.getText().trim());
-            return retVal;
+            return Integer.parseInt(inputTextField.getText().trim());
         }
         catch(NumberFormatException ex){
             return null;

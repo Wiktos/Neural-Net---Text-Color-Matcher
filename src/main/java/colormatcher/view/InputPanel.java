@@ -13,9 +13,9 @@ import java.util.Optional;
  */
 public class InputPanel extends JPanel implements ColorInputable {
 
-    private SingleInputValue red = new SingleInputValue("RED VALUE");
-    private SingleInputValue green = new SingleInputValue("GREEN VALUE");
-    private SingleInputValue blue = new SingleInputValue("BLUE VALUE");
+    private final SingleInputValue red = new SingleInputValue("RED VALUE");
+    private final SingleInputValue green = new SingleInputValue("GREEN VALUE");
+    private final SingleInputValue blue = new SingleInputValue("BLUE VALUE");
 
     public InputPanel() {
         setLayout(new GridLayout(3, 1));

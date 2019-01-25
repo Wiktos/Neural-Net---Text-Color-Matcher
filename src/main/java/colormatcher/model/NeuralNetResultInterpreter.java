@@ -19,7 +19,7 @@ public class NeuralNetResultInterpreter {
         return neuralNetOutput.getNodeValue(0) > neuralNetOutput.getNodeValue(1) ? WHITE : BLACK;
     }
 
-    private static NeuralNetResultInterpreter ourInstance = new NeuralNetResultInterpreter();
+    private static final NeuralNetResultInterpreter ourInstance = new NeuralNetResultInterpreter();
 
     private NeuralNetResultInterpreter() { }
 }

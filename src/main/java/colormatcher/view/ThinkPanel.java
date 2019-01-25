@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
  */
 public class ThinkPanel extends JPanel implements ThinkablePanel {
 
-    private JButton thinkBtn = new JButton("THINK");
-    private JLabel inventedValueLb = new JLabel("Invented value : ");
+    private final JButton thinkBtn = new JButton("THINK");
+    private final JLabel inventedValueLb = new JLabel("Invented value : ");
 
     public ThinkPanel() {
         setLayoutManagerProperties();

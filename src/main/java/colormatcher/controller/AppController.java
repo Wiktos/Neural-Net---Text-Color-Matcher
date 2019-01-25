@@ -22,8 +22,8 @@ public class AppController implements ActionListener {
     private static final String ERROR_RANGE_MESSAGE = "Make sure all inputs are between [0; 255]";
     private static final String ERROR_NON_NUMERICAL_INPUT_MESSAGE = "Make sure that input is a numerical value";
 
-    private ColorInputable inputPanel;
-    private ThinkablePanel thinkPanel;
+    private final ColorInputable inputPanel;
+    private final ThinkablePanel thinkPanel;
     private AI ai = new NeuralNet();
 
     public AppController(ColorInputable inputPanel, ThinkablePanel thinkPanel) {

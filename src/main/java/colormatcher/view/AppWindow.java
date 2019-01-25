@@ -16,8 +16,8 @@ public class AppWindow extends JFrame {
     private final static String TITLE = "Neural net - Text color matcher";
     private final static int WIDTH = 600;
     private final static int HEIGHT = 400;
-    private InputPanel inputPanel = new InputPanel();
-    private ThinkPanel thinkPanel = new ThinkPanel();
+    private final InputPanel inputPanel = new InputPanel();
+    private final ThinkPanel thinkPanel = new ThinkPanel();
 
     public AppWindow(){
         setDefaultWindowProperties();
@@ -37,7 +37,13 @@ public class AppWindow extends JFrame {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(()->{
-            JFrame window = new AppWindow();
+            try{
+                JFrame window = new AppWindow();
+            }
+            catch(Exception ex){
+                System.err.println(TITLE + " failed to launch");
+                System.err.println(ex.getStackTrace());
+            }
         });
     }
 }

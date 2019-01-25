@@ -20,14 +20,15 @@ public class NeuralNet implements AI {
 
     private final static Color[] STANDARD_TRAINING_INPUTS = new Color[]{new Color(0.6, 0.6, 0.6),
                                                                         new Color(0.4, 0.4, 0.4)};
-    private final double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
+    private final static double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
                                                                       {1.0, 0.0}};
 
-    private final double learningRate = 0.9;
+    private final static double LEARNING_RATE = 0.9;
+
     private NeuralNetTrainingDataset trainingDataset = new NeuralNetTrainingDataset(STANDARD_TRAINING_INPUTS, STANDARD_DESIRED_OUTPUT);
 
-    private Synapse syn0;
-    private Synapse syn1;
+    private final Synapse syn0;
+    private final Synapse syn1;
 
     public NeuralNet() {
         syn0 = new Synapse(3, 2);
@@ -122,13 +123,13 @@ public class NeuralNet implements AI {
 
         for (int i = 0; i < syn1.getRow(); i++) {
             for (int j = 0; j < syn1.getCol(); j++) {
-                syn1.setWeight(i, j,  syn1.getWeight(i, j) + learningRate * syn1Delta[i][j]);
+                syn1.setWeight(i, j,  syn1.getWeight(i, j) + LEARNING_RATE * syn1Delta[i][j]);
             }
         }
 
         for (int i = 0; i < syn0.getRow(); i++) {
             for (int j = 0; j < syn0.getCol(); j++) {
-                syn0.setWeight(i, j,  syn0.getWeight(i, j) + learningRate * syn0Delta[i][j]);
+                syn0.setWeight(i, j,  syn0.getWeight(i, j) + LEARNING_RATE * syn0Delta[i][j]);
             }
         }
     }
