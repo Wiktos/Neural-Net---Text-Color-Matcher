@@ -10,7 +10,7 @@ public class NeuralNetLayer {
 
     private double[] nodes;
 
-    public NeuralNetLayer(int nodesNumber) throws IllegalArgumentException {
+    public NeuralNetLayer(final int nodesNumber) throws IllegalArgumentException {
         if(!checkConstructorInputValue(nodesNumber)){
             throw new IllegalArgumentException("Layer node number less than 0");
         }
@@ -22,7 +22,7 @@ public class NeuralNetLayer {
         return nodes.length;
     }
 
-    public double getNodeValue(int idx) throws IllegalArgumentException {
+    public double getNodeValue(final int idx) throws IllegalArgumentException {
         if(!checkInputValue(idx)){
             throw new IllegalArgumentException("Layer node index less than 0");
         }
@@ -30,7 +30,7 @@ public class NeuralNetLayer {
         return nodes[idx];
     }
 
-    public void setNodeValue(int idx, double newValue) throws IllegalArgumentException {
+    public void setNodeValue(final int idx, double newValue) throws IllegalArgumentException {
         if(!checkInputValue(idx)){
             throw new IllegalArgumentException("Layer node index less than 0");
         }
@@ -38,11 +38,11 @@ public class NeuralNetLayer {
         nodes[idx] = newValue;
     }
 
-    private boolean checkConstructorInputValue(int val) {
+    private boolean checkConstructorInputValue(final int val) {
         return val > 0;
     }
 
-    private boolean checkInputValue(int val) {
+    private boolean checkInputValue(final int val) {
         return val >= 0;
     }
 }

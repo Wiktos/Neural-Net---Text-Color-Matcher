@@ -23,14 +23,14 @@ public class Synapse {
         fillWeightsWithRandomValues();
     }
 
-    public double getWeight(int x, int y) throws IllegalArgumentException {
+    public double getWeight(final int x, final int y) throws IllegalArgumentException {
         if(!isWeightExisting(x, y)){
             throw new IllegalArgumentException();
         }
         return weights[x * col +  y];
     }
 
-    public void setWeight(int x, int y, double newValue) throws IllegalArgumentException {
+    public void setWeight(final int x, final int y, double newValue) throws IllegalArgumentException {
         if(!isWeightExisting(x, y)){
             throw new IllegalArgumentException();
         }
@@ -45,7 +45,7 @@ public class Synapse {
         return col;
     }
 
-    private boolean checkInputsValue(int width, int height) {
+    private boolean checkInputsValue(final int width, final int height) {
         return isGreaterThanZero(width) && isGreaterThanZero(height);
     }
 
@@ -57,11 +57,11 @@ public class Synapse {
         }
     }
 
-    private boolean isWeightExisting(int x, int y) {
+    private boolean isWeightExisting(final int x, final int y) {
         return x < row || y < col;
     }
 
-    private boolean isGreaterThanZero(int val) {
+    private boolean isGreaterThanZero(final int val) {
         return val > 0;
     }
 }

@@ -58,7 +58,7 @@ public class AppController implements ActionListener {
         this.ai = ai;
     }
 
-    private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IllegalArgumentException {
+    private int receiveColor(final Optional<Integer> inputColor) throws NullPointerException, IllegalArgumentException {
         if(!inputColor.isPresent()){
             throw new NullPointerException();
         }
@@ -69,17 +69,17 @@ public class AppController implements ActionListener {
         return color;
     }
 
-    private void displayErrorMessageBox(String msg, String title) {
+    private void displayErrorMessageBox(final String msg, final String title) {
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    private String inventColor(Color color) {
+    private String inventColor(final Color color) {
         NeuralNetLayer output = ai.think(color);
         String inventedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
         return inventedColor;
     }
 
-    private void displayInvention(String invention, java.awt.Color background) {
+    private void displayInvention(final String invention, final java.awt.Color background) {
         thinkPanel.setInvention(invention);
         thinkPanel.changeBackgroundColor(background);
         if (invention.equals(NeuralNetResultInterpreter.WHITE)) {

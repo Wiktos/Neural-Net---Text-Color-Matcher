@@ -13,7 +13,7 @@ public class SingleInputValue extends JPanel{
     private JLabel description;
     private JTextField inputTextField;
 
-    public SingleInputValue(String description) {
+    public SingleInputValue(final String description) {
         setLayout(new GridLayout(1, 2));
         setLabelProperties(description);
         setTextFieldProperties();
@@ -30,7 +30,7 @@ public class SingleInputValue extends JPanel{
         }
     }
 
-    private void setLabelProperties(String description) {
+    private void setLabelProperties(final String description) {
         this.description = new JLabel(description);
         this.description.setHorizontalAlignment(SwingConstants.CENTER);
         this.description.setFont(new Font("TimesRoman", Font.PLAIN + Font.BOLD, 20));
@@ -42,7 +42,7 @@ public class SingleInputValue extends JPanel{
         inputTextField.setColumns(5);
     }
 
-    private void addComponentToGrid(JComponent component) {
+    private void addComponentToGrid(final JComponent component) {
         FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
         JPanel panel = new JPanel(layout);
         panel.add(component);

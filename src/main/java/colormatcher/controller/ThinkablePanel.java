@@ -9,8 +9,8 @@ package main.java.colormatcher.controller;
  */
 public interface ThinkablePanel {
 
-    public void setInvention(String invention);
-    public void changeBackgroundColor(java.awt.Color color);
-    public void changeFontColor(java.awt.Color color);
+    public void setInvention(final String invention);
+    public void changeBackgroundColor(final java.awt.Color color);
+    public void changeFontColor(final java.awt.Color color);
 
 }

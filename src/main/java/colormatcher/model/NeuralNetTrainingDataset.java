@@ -29,7 +29,7 @@ public class NeuralNetTrainingDataset {
         return new Pair<>(inputs[idx], desiredOutputs[idx]);
     }
 
-    public Color getInputData(int idx) throws IllegalArgumentException {
+    public Color getInputData(final int idx) throws IllegalArgumentException {
         if(!isIndexInRange(idx, inputs.length)) {
             throw new IllegalArgumentException("Index out of range");
         }
@@ -37,7 +37,7 @@ public class NeuralNetTrainingDataset {
         return inputs[idx];
     }
 
-    public double[] getDesiredOutputData(int idx) throws IllegalArgumentException {
+    public double[] getDesiredOutputData(final int idx) throws IllegalArgumentException {
         if(!isIndexInRange(idx, desiredOutputs.length)) {
             throw new IllegalArgumentException("Index out of range");
         }
@@ -45,11 +45,11 @@ public class NeuralNetTrainingDataset {
         return desiredOutputs[idx];
     }
 
-    private boolean checkConstructorInputs(int len1, int len2) {
+    private boolean checkConstructorInputs(final int len1, final int len2) {
         return len1 == len2;
     }
 
-    private boolean isIndexInRange(int idx, int upperBound){
+    private boolean isIndexInRange(final int idx, final int upperBound){
         return idx >= 0 && idx < upperBound;
     }
 }

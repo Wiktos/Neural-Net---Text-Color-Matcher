@@ -14,7 +14,7 @@ public class Color {
 
     private double[] rgb;
 
-    public Color(double r, double g, double b) {
+    public Color(final double r, final double g, final double b) {
         if(!checkConstructorInputs(r, g, b)) {
             throw new IllegalArgumentException("Color value not in range [0; 1]");
         }
@@ -22,7 +22,7 @@ public class Color {
         rgb = new double[]{r, g, b};
     }
 
-    public Color(java.awt.Color col) {
+    public Color(final java.awt.Color col) {
         rgb = new double[]{col.getRed() / 255.0, col.getGreen() / 255.0, col.getBlue() / 255.0};
     }
 
@@ -42,11 +42,11 @@ public class Color {
         return rgb;
     }
 
-    private boolean checkConstructorInputs(double r, double g, double b) {
+    private boolean checkConstructorInputs(final double r, final double g, final double b) {
         return checkColorValue(r) && checkColorValue(g) && checkColorValue(b);
     }
 
-    private boolean checkColorValue(double val) {
+    private boolean checkColorValue(final double val) {
         return  val >= 0.0 && val <= 1.0;
     }
 

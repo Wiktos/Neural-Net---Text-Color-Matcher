@@ -23,21 +23,21 @@ public class ThinkPanel extends JPanel implements ThinkablePanel {
         addComponentToGrid(inventedValueLb, BorderLayout.CENTER);
     }
 
-    public void setInvention(String invention) {
+    public void setInvention(final String invention) {
         inventedValueLb.setText("Predicted value : " + invention);
     }
 
-    public void attachControllerToThinkButton(ActionListener listener) {
+    public void attachControllerToThinkButton(final ActionListener listener) {
         thinkBtn.addActionListener(listener);
     }
 
-    public void changeBackgroundColor(Color color) {
+    public void changeBackgroundColor(final Color color) {
         for(Component comp : getComponents()) {
             comp.setBackground(color);
         }
     }
 
-    public void changeFontColor(Color color){
+    public void changeFontColor(final Color color){
         inventedValueLb.setForeground(color);
     }
 
@@ -50,7 +50,7 @@ public class ThinkPanel extends JPanel implements ThinkablePanel {
         setLayout(borderLayout);
     }
 
-    private void addComponentToGrid(JComponent component, String borderLayoutPosition) {
+    private void addComponentToGrid(final JComponent component, final String borderLayoutPosition) {
         JPanel panel = new JPanel();
         panel.add(component);
         add(panel, borderLayoutPosition);
