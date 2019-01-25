@@ -3,6 +3,11 @@ package main.java.colormatcher.view;
 import javax.swing.*;
 import java.awt.*;
 
+/*
+    SingleInputValue is a container class that keep both JLabel and JTextField together.
+
+    by Wiktor Łazarski
+ */
 public class SingleInputValue extends JPanel{
 
     private JLabel description;

@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/*
+    ThinkPanel is a class responsible for displaying the result obtained from NeuralNet.
+
+    by Wiktor Łazarski
+ */
 public class ThinkPanel extends JPanel implements ThinkablePanel {
 
     private JButton thinkBtn = new JButton("THINK");

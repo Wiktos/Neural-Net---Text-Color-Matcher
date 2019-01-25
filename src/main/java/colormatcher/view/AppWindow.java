@@ -5,6 +5,12 @@ import main.java.colormatcher.controller.AppController;
 import javax.swing.*;
 import java.awt.*;
 
+/*
+    AppWindow is a final class of GUI which collect all panels into one whole.
+    This class contains main function of application.
+
+    by Wiktor Łazarski
+ */
 public class AppWindow extends JFrame {
 
     private final static String TITLE = "Neural net - Text color matcher";

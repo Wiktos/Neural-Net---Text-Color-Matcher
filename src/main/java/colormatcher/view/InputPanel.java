@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Optional;
 
+/*
+    InputPanel is a class responsible for collecting the input color data from the user, which will be used as input layer in NeuralNet.
+
+    by Wiktor Łazarski
+ */
 public class InputPanel extends JPanel implements ColorInputable {
 
     private SingleInputValue red = new SingleInputValue("RED VALUE");
