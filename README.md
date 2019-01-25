@@ -14,9 +14,6 @@ Software was based on Model-View-Controller design pattern. Model contains hole 
 ### Prediction - BLACK
 ![alt text](https://db3pap002files.storage.live.com/y4m2FH7t0GE5ZAZ99hrdcoy7bQHDPbj07oA3yMWP9hwwd89GOFAVlr44OlSl9B3_UFGQ-Y57iMYmkqVBxDXE4ifakRFdtvF_l3Hj31oBAEu20nNph-TAVK919E3w9Xal9RLUc03Ix-FilM5ivO8xfvv4I32xgirFTRAUq-CVGJLGWSv7m4cMI7xPFdLm7GIQTFu2uwUpsz8J8my07QjDZTh3w/blackpred.jpg?psid=1&width=596&height=398)
 
-## JavaDoc
-stay tuned
-
 ## Neural Net used - Diagram
 ![alt text](https://db3pap002files.storage.live.com/y4m3mwm_2IaGQfFWatTSsQwlXPD1dU5qjtbGMex2kKNK9StLmgaFgn7f252hTd8jveYMewrOn890d5wxIBm_T3uE1jK4gs8u_YnT1S40NCY6EEQEbkkCinOT3u05VYYXtbqtDVAN_Fb2XhaTn96GyQgYGAOha78Q6w--kAST3FUEVAdeF9EiA_3RcnAcuCY4LDuNvE7nVIPKnid5kCHsTga2Q/neuralnetimg.JPG?psid=1&width=951&height=328)
 
