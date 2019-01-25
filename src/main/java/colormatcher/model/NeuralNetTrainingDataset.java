@@ -2,6 +2,11 @@ package main.java.colormatcher.model;
 
 import javafx.util.Pair;
 
+/*
+    NeuralNetTrainingDataset is a class that provides and holds dataset which are used to train NeuralNet.
+
+    by Wiktor Łazarski
+ */
 public class NeuralNetTrainingDataset {
 
     private final Color[] inputs;

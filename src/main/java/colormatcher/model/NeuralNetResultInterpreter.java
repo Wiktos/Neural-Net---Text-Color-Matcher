@@ -1,5 +1,11 @@
 package main.java.colormatcher.model;
 
+/*
+    NeuralNetResultInterpreter class is based on the Singleton designed pattern.
+    It is used to interpret output layer of NeuralNet.
+
+    by Wiktor Łazarski
+ */
 public class NeuralNetResultInterpreter {
 
     public static final String WHITE = "WHITE";

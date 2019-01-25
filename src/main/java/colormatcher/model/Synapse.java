@@ -1,9 +1,10 @@
 package main.java.colormatcher.model;
 
 /*
+    Synapse class represents connection between layers in NeuralNet.
 
+    by Wiktor Łazarski
  */
-
 public class Synapse {
 
     private double[] weights;

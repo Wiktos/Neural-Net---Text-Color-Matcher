@@ -1,5 +1,11 @@
 package main.java.colormatcher.model;
 
+/*
+    NeuralNetLayer is a class which represent NeuralNet layer.
+    The only one exception is input layer which is represented by Color class.
+
+    by Wiktor Łazarski
+ */
 public class NeuralNetLayer {
 
     private double[] nodes;

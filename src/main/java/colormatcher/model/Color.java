@@ -1,5 +1,11 @@
 package main.java.colormatcher.model;
 
+/*
+    Color class describes color in RGB values which are between[0, 1]
+    This class is used as an input layer for NeuralNet.
+
+    by Wiktor Łazarski
+ */
 public class Color {
 
     public static final int RED_INDEX = 0;
