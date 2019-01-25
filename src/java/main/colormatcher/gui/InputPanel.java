@@ -1,5 +1,8 @@
+package java.main.colormatcher.gui;
+
 import javax.swing.*;
 import java.awt.*;
+import java.main.colormatcher.applogic.ColorInputable;
 import java.util.Optional;
 
 /**

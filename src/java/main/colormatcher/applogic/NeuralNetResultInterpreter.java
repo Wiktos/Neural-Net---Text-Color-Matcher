@@ -1,3 +1,5 @@
+package java.main.colormatcher.applogic;
+
 /**
  * Created by Wiktor Łazarski on 23.01.2019.
  */

@@ -1,5 +1,8 @@
+package java.main.colormatcher.gui;
+
 import javax.swing.*;
 import java.awt.*;
+import java.main.colormatcher.applogic.AppController;
 
 /**
  * Created by Wiktor Łazarski on 22.01.2019.

@@ -1,3 +1,5 @@
+package java.main.colormatcher.gui;
+
 import javax.swing.*;
 import java.awt.*;
 

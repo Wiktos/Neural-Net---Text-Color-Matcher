@@ -1,3 +1,5 @@
+package java.main.colormatcher.applogic;
+
 import java.awt.*;
 
 /**
