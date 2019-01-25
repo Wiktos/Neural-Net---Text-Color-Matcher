@@ -1,9 +1,10 @@
-package java.main.colormatcher.gui;
+package main.java.colormatcher.gui;
+
+import main.java.colormatcher.applogic.ThinkablePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.main.colormatcher.applogic.ThinkablePanel;
 
 /**
  * Created by Wiktor Łazarski on 23.01.2019.

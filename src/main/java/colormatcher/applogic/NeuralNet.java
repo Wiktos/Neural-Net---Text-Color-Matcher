@@ -1,4 +1,4 @@
-package java.main.colormatcher.applogic;
+package main.java.colormatcher.applogic;
 
 public class NeuralNet {
 
