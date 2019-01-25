@@ -28,7 +28,7 @@ second node of that layer is active than predicted color is white.
 ## Software UML *Class Diagram* - Model
 ![alt text](https://db3pap002files.storage.live.com/y4mGxebllsJkJnagY5DyGtub0R5vjTFv66Fz4MNog6I2m20UhgVD2I84lbaI0GCLmPOA8NRBJqFjSudzNN7_wiwS63Y2iQq3_WqaDtiR0SUITk86-nQcjIPFL0z2F0J5hx6RsKIHHfzRUhI_tiiKUr88ISQZN2vo2uDuo7vNlew3o8rYAVBbKcnkInFCuprBqtRrcWhEhPFxFf5OZmLJJj-yw/NeuralNetModel.jpg?psid=1&width=943&height=820)
 
-## Sottware UML *Class Diagram* - Controller
+## Software UML *Class Diagram* - Controller
 ![alt text](https://db3pap002files.storage.live.com/y4m_i5A6GdtkisY3Yz84TP1CsbT1lU8ziNUBg-rw3dbaGOUVwST4HfSNvL2YgylAMckTR5GUA_xxJ5ChXfAD8HyA6vOm4kT19PfSP34YXNk6jmo0YkUQUk9l2SKDDjBWufaDiKXkpk4SXn02HZkdSfulio0MnimnzvCXiCtpGXPy4JvJeWrdNkpQmNrgF780fG8SfFaAyMH4MwfGIt1T1AJNw/NeuralNetController.jpg?psid=1&width=943&height=490)
 
 **_AI_** - is an interface that is implemented by NeuralNet from Model module.
