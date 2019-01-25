@@ -10,6 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Optional;
 
+/*
+    AppController is a main class of Controller module.
+    Is responsible for transfer data from View to Model and the other way around.
+
+    by Wiktor Łazarski
+ */
 public class AppController implements ActionListener {
 
     private static final String ERROR_DIALOG_BOX_TITLE = "Input error";
