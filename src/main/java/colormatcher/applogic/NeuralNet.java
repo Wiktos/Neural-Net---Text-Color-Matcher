@@ -15,8 +15,8 @@ public class NeuralNet {
     */
     private final double LEARNING_RATE = 0.9;
 
-    private final static double[][] STANDARD_TRAINING_INPUTS = new double[][]{{0.6, 0.6, 0.6},
-                                                {0.4, 0.4, 0.4}};
+    private final static Color[] STANDARD_TRAINING_INPUTS = new Color[]{new Color(0.6, 0.6, 0.6),
+                                                new Color(0.4, 0.4, 0.4)};
     private final double[][] STANDARD_DESIRED_OUTPUT = new double[][]{{0.0, 1.0},
                                                             {1.0, 0.0}};
 
@@ -42,8 +42,8 @@ public class NeuralNet {
         performFullTraining(6000);
     }
 
-    public NeuralNetLayer think(double[] X) {
-        NeuralNetLayer hiddenLayer = computeHiddenLayer(X);
+    public NeuralNetLayer think(Color color) {
+        NeuralNetLayer hiddenLayer = computeHiddenLayer(color);
         NeuralNetLayer outputLayer = computeOutputLayer(hiddenLayer);
 
         return outputLayer;
@@ -59,14 +59,14 @@ public class NeuralNet {
         }
     }
 
-    private void oneTraining(Pair<double[], double[]> inputWithDesiredOutput) {
+    private void oneTraining(Pair<Color, double[]> inputWithDesiredOutput) {
         NeuralNetLayer hiddenLayer = computeHiddenLayer(inputWithDesiredOutput.getKey());
         NeuralNetLayer outputLayer = computeOutputLayer(hiddenLayer);
 
         backPropagation(outputLayer, hiddenLayer, inputWithDesiredOutput);
     }
 
-    private NeuralNetLayer computeHiddenLayer(double[] X){
+    private NeuralNetLayer computeHiddenLayer(Color X){
         NeuralNetLayer retv = new NeuralNetLayer(2);
 
         double sum = dotProduct(X, syn0, 0);
@@ -89,8 +89,8 @@ public class NeuralNet {
         return retv;
     }
 
-    private void backPropagation(NeuralNetLayer outputLayer, NeuralNetLayer hiddenLayer, Pair<double[], double[]> inputAndDesiredOut ) {
-        double[] X = inputAndDesiredOut.getKey();
+    private void backPropagation(NeuralNetLayer outputLayer, NeuralNetLayer hiddenLayer, Pair<Color, double[]> inputAndDesiredOut ) {
+        double[] X = inputAndDesiredOut.getKey().asArray();
         double[] desiredOut = inputAndDesiredOut.getValue();
 
         double[] outputError = new double[2];
@@ -130,10 +130,11 @@ public class NeuralNet {
         }
     }
 
-    private double dotProduct(double[] input, Synapse syn, int synNodeIdx) {
+    private double dotProduct(Color input, Synapse syn, int synNodeIdx) {
+        double[] colArr = input.asArray();
         double sum = 0.0;
-        for (int i = 0; i < input.length; i++) {
-            sum += input[i] * syn0.getWeight(i, synNodeIdx);
+        for (int i = 0; i < colArr.length; i++) {
+            sum += colArr[i] * syn0.getWeight(i, synNodeIdx);
         }
         return sum;
     }

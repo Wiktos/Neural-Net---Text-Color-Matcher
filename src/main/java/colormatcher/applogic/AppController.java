@@ -1,7 +1,6 @@
 package main.java.colormatcher.applogic;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Optional;
@@ -30,11 +29,9 @@ public class AppController implements ActionListener {
         Optional<Integer> greenVal = inputPanel.greenValue();
         Optional<Integer> blueVal = inputPanel.blueValue();
 
-        double[] color = new double[3];
+        Color color;
         try{
-            color[0] = receiveColor(redVal) / 255.0;
-            color[1] = receiveColor(greenVal) / 255.0;
-            color[2] = receiveColor(blueVal) / 255.0;
+            color = new Color(receiveColor(redVal) / 255.0, receiveColor(greenVal) / 255.0, receiveColor(blueVal) / 255.0);
         }
         catch (NullPointerException ex) {
             displayErrorMessageBox(ERROR_NON_NUMERICAL_INPUT_MESSAGE, ERROR_DIALOG_BOX_TITLE);
@@ -46,7 +43,7 @@ public class AppController implements ActionListener {
         }
 
         String inventedColor = inventColor(color);
-        displayInvention(inventedColor, new Color(redVal.get(), greenVal.get(), blueVal.get()));
+        displayInvention(inventedColor, new java.awt.Color(redVal.get(), greenVal.get(), blueVal.get()));
     }
 
     private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IllegalArgumentException {
@@ -64,19 +61,19 @@ public class AppController implements ActionListener {
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    private String inventColor(double[] color) {
+    private String inventColor(Color color) {
         NeuralNetLayer output = neuralNet.think(color);
         String inventedColor = NeuralNetResultInterpreter.getInstance().interpret(output);
         return inventedColor;
     }
 
-    private void displayInvention(String invention, Color background) {
+    private void displayInvention(String invention, java.awt.Color background) {
         thinkPanel.setInvention(invention);
         thinkPanel.changeBackgroundColor(background);
         if (invention.equals("WHITE")) {
-            thinkPanel.changeFontColor(Color.WHITE);
+            thinkPanel.changeFontColor(java.awt.Color.WHITE);
         } else {
-            thinkPanel.changeFontColor(Color.BLACK);
+            thinkPanel.changeFontColor(java.awt.Color.BLACK);
         }
     }
 }

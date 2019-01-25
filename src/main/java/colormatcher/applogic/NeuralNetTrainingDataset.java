@@ -7,10 +7,10 @@ import javafx.util.Pair;
  */
 public class NeuralNetTrainingDataset {
 
-    private final double[][] inputs;
+    private final Color[] inputs;
     private final double[][] desiredOutputs;
 
-    public NeuralNetTrainingDataset(double[][] inputs, double[][] desiredOutputs) throws IllegalArgumentException {
+    public NeuralNetTrainingDataset(Color[] inputs, double[][] desiredOutputs) throws IllegalArgumentException {
         if(!checkConstructorInputs(inputs.length, desiredOutputs.length)) {
             throw new IllegalArgumentException("Number of inputs does not equal number of desired outputs");
         }
@@ -19,7 +19,7 @@ public class NeuralNetTrainingDataset {
         this.desiredOutputs = desiredOutputs;
     }
 
-    public Pair<double[], double[]> getPairOfInputAndDesiredOutput(int idx) throws IllegalArgumentException{
+    public Pair<Color, double[]> getPairOfInputAndDesiredOutput(int idx) throws IllegalArgumentException{
         if(!isIndexInRange(idx, inputs.length) || !isIndexInRange(idx, desiredOutputs.length)) {
             throw new IllegalArgumentException("Index out of range");
         }
@@ -27,7 +27,7 @@ public class NeuralNetTrainingDataset {
         return new Pair<>(inputs[idx], desiredOutputs[idx]);
     }
 
-    public double[] getInputData(int idx) throws IllegalArgumentException {
+    public Color getInputData(int idx) throws IllegalArgumentException {
         if(!isIndexInRange(idx, inputs.length)) {
             throw new IllegalArgumentException("Index out of range");
         }
