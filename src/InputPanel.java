@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * Created by Wiktor Łazarski on 23.01.2019.
  */
-public class InputPanel extends JPanel {
+public class InputPanel extends JPanel implements ColorInputable {
 
     private SingleInputValue red = new SingleInputValue("RED VALUE");
     private SingleInputValue green = new SingleInputValue("GREEN VALUE");

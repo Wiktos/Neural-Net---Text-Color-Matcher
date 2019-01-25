@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Wiktor Łazarski on 23.01.2019.
  */
-public class ThinkPanel extends JPanel {
+public class ThinkPanel extends JPanel implements ThinkablePanel {
 
     private JButton thinkBtn = new JButton("THINK");
     private JLabel inventedValueLb = new JLabel("Invented value : ");
@@ -17,8 +17,8 @@ public class ThinkPanel extends JPanel {
         addComponentToGrid(inventedValueLb, BorderLayout.CENTER);
     }
 
-    public void setInvention(String prediction) {
-        inventedValueLb.setText("Predicted value : " + prediction);
+    public void setInvention(String invention) {
+        inventedValueLb.setText("Predicted value : " + invention);
     }
 
     public void attachControllerToThinkButton(ActionListener listener) {

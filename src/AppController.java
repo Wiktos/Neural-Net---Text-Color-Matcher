@@ -14,11 +14,11 @@ public class AppController implements ActionListener {
     private static final String ERROR_RANGE_MESSAGE = "Make sure all inputs are between [0; 255]";
     private static final String ERROR_NON_NUMERICAL_INPUT_MESSAGE = "Make sure that input is a numerical value";
 
-    private InputPanel inputPanel;
-    private ThinkPanel thinkPanel;
+    private ColorInputable inputPanel;
+    private ThinkablePanel thinkPanel;
     private NeuralNet neuralNet = new NeuralNet();
 
-    public AppController(InputPanel inputPanel, ThinkPanel thinkPanel) {
+    public AppController(ColorInputable inputPanel, ThinkablePanel thinkPanel) {
         this.inputPanel = inputPanel;
         this.thinkPanel = thinkPanel;
     }
@@ -34,7 +34,6 @@ public class AppController implements ActionListener {
             color[0] = receiveColor(redVal) / 255.0;
             color[1] = receiveColor(greenVal) / 255.0;
             color[2] = receiveColor(blueVal) / 255.0;
-            thinkPanel.changeBackgroundColor(new Color(redVal.get(), greenVal.get(), blueVal.get()));
         }
         catch (NullPointerException ex) {
             displayErrorMessageBox(ERROR_NON_NUMERICAL_INPUT_MESSAGE, ERROR_DIALOG_BOX_TITLE);
@@ -46,7 +45,7 @@ public class AppController implements ActionListener {
         }
 
         String inventedColor = inventColor(color);
-        displayInvention(inventedColor);
+        displayInvention(inventedColor, new Color(redVal.get(), greenVal.get(), blueVal.get()));
     }
 
     private int receiveColor(Optional<Integer> inputColor) throws NullPointerException, IOException {
@@ -70,8 +69,9 @@ public class AppController implements ActionListener {
         return inventedColor;
     }
 
-    private void displayInvention(String invention) {
+    private void displayInvention(String invention, Color background) {
         thinkPanel.setInvention(invention);
+        thinkPanel.changeBackgroundColor(background);
         if (invention.equals("WHITE")) {
             thinkPanel.changeFontColor(Color.WHITE);
         } else {
