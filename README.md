@@ -5,7 +5,7 @@ Software was based on Model-View-Controller design pattern. Model contains hole 
 , which in case of my aplication were reasised via Java interfaces.
 
 ## Program Overview
-![alt text](https://j7ygtg.db.files.1drv.com/y4mYbjqv4xRC-oQtLbSjHfZTlVyBn-LTjTEmRj3OeWQ9WPA04z7FBAdmqVsFGiXPMbzbY3eWwxYI4lme3VMuifWZkj5ENhnCYy3JufoXDUea4-U2DlzN7PyBSgvFyxxYyfCp-ZrwC_VzyAUCE7WfObe4LBunFVVdQpI_58xtlPlcOncMozVyBb32oBqX0Ac2qH32PJ2ZhsxuYYkFJIRiNHNhA/NeuralNetOver.gif?download&psid=1)
+![alt text](https://jlygtg.db.files.1drv.com/y4ma1P--LTuYUXYnJNWiWlQtz5gOw42wgzZuABvvEZLuyzA2X8Hc5UA3dOdVYIhNSHvP1JzyjJze4_AcEeNMS9jXSLO42vmuu6XhtN6ANwUy4h0yUCx5bXZxoNBIKCV7VwP4yuWy6K2QIjhGfLAuOgBH5XeyMJKs34dJe06W95p8BXyoGkfxzd3v4siGG_Kw8IMchCNgIUSswcb_wCKcV88aQ/NeuralNetOver.gif?download&psid=1)
 
 ## Neural Net used - Diagram
 ![alt text](https://db3pap002files.storage.live.com/y4m3mwm_2IaGQfFWatTSsQwlXPD1dU5qjtbGMex2kKNK9StLmgaFgn7f252hTd8jveYMewrOn890d5wxIBm_T3uE1jK4gs8u_YnT1S40NCY6EEQEbkkCinOT3u05VYYXtbqtDVAN_Fb2XhaTn96GyQgYGAOha78Q6w--kAST3FUEVAdeF9EiA_3RcnAcuCY4LDuNvE7nVIPKnid5kCHsTga2Q/neuralnetimg.JPG?psid=1&width=951&height=328)
