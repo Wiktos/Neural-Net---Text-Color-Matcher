@@ -16,10 +16,10 @@ Software was based on Model-View-Controller design pattern. Model contains hole 
 second node of that layer is active than predicted color is white.
 
 ## Software UML *Class Diagram* - Model
-![alt text](https://db3pap002files.storage.live.com/y4mGxebllsJkJnagY5DyGtub0R5vjTFv66Fz4MNog6I2m20UhgVD2I84lbaI0GCLmPOA8NRBJqFjSudzNN7_wiwS63Y2iQq3_WqaDtiR0SUITk86-nQcjIPFL0z2F0J5hx6RsKIHHfzRUhI_tiiKUr88ISQZN2vo2uDuo7vNlew3o8rYAVBbKcnkInFCuprBqtRrcWhEhPFxFf5OZmLJJj-yw/NeuralNetModel.jpg?psid=1&width=943&height=820)
+![alt text](https://db3pap002files.storage.live.com/y4mpZIL0KL3XD26eq3XyzM_zpQeY8MhUJHlYZoXvDnPakSer1WhqUcHqIdWkW-7Xj6y4F34a7ArLFWWV7oYJTgLtMfen8PBioRFKCsrntaWGDHZ031Nmnlwq13XxC29bWPiq1AHi2ay5JjNsGf49lwsbDp5AZurN5kQZFBq-rmoTddvtn9F6m2OfycUru9OgYpf5vTG002wX2veUTiIS7JQQQ/Model__Model_0.jpg?psid=1&width=976&height=848)
 
 ## Software UML *Class Diagram* - Controller
-![alt text](https://db3pap002files.storage.live.com/y4m_i5A6GdtkisY3Yz84TP1CsbT1lU8ziNUBg-rw3dbaGOUVwST4HfSNvL2YgylAMckTR5GUA_xxJ5ChXfAD8HyA6vOm4kT19PfSP34YXNk6jmo0YkUQUk9l2SKDDjBWufaDiKXkpk4SXn02HZkdSfulio0MnimnzvCXiCtpGXPy4JvJeWrdNkpQmNrgF780fG8SfFaAyMH4MwfGIt1T1AJNw/NeuralNetController.jpg?psid=1&width=943&height=490)
+![alt text](https://db3pap002files.storage.live.com/y4mq4EI3JWhBJbh8TWQ7uJzp5cgycgo8lOjBDGuJkUMGdVAnmVYpgCUtg_ZIpuv1hzd7P1IaqwzKfy6VjFKM179wIqHWKluxbAkbzXdnbHxnXmytdzsbyXx59nZS0MJXcHxUuBibdDvhGZURoAtQO03E0NsC7omIYsaN5XAkLRoXKSX5NTGj_oOcTqvfnu4_17Kp4NLS_TGR4gDbTZgmwiSUg/Controller__Controller_1.jpg?psid=1&width=943&height=490)
 
 **_AI_** - is an interface that is implemented by NeuralNet from Model module.
 
@@ -28,4 +28,4 @@ second node of that layer is active than predicted color is white.
 **_ColorInputable_** is an interface that is implemeted by *InputPanel* from View module.
 
 ## Software UML *Class Diagram* - View
-![alt text](https://db3pap002files.storage.live.com/y4mAqbJYG6cn1QW8YC20SrECzqoiq2JIQy7G90unO-jkm3b5WxR2j0jC4ema1YqDaYAbYsJK_0gEelrtemk--d2SF2NUA2nvZAqxvBCeeZarhuXJpG3EqDZ5zx2FUv7vtMqojbD-YJNgDGCmszneugl5FHWCootQu-bGaUZ6_q-zTkiogi_aF8y0ZjS9-gu0UCfc0_iUlT8SjCWQTBqgrhtRQ/NeuralNetView.jpg?psid=1&width=842&height=769)
+![alt text](https://db3pap002files.storage.live.com/y4m0n0f073hlI0SJ39dKyJNcQPvgirqBb8J8Nno-JYapmbq4RpOX3OG-aegLCSk8U0hOf5rsClfb_nQLeCR4vugWZK2rg-4xbByvJPi9OOWheeR5OUWvEEs5oLqGfDIAmOVIk1x8HaDb4nal2ECnuJxRGS2-qAkt802WrvLcRj-P9eShOyJm0znLUbS4flFUpKkOW9UrHF383jD-aNQeKBbhw/View__View_2.jpg?psid=1&width=842&height=769)
