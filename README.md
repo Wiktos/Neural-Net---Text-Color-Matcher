@@ -5,10 +5,10 @@ Software was based on Model-View-Controller design pattern. Model contains hole 
 , which in case of my aplication were reasised via Java interfaces.
 
 ## Program Overview
-![alt text](https://jlygtg.db.files.1drv.com/y4ma1P--LTuYUXYnJNWiWlQtz5gOw42wgzZuABvvEZLuyzA2X8Hc5UA3dOdVYIhNSHvP1JzyjJze4_AcEeNMS9jXSLO42vmuu6XhtN6ANwUy4h0yUCx5bXZxoNBIKCV7VwP4yuWy6K2QIjhGfLAuOgBH5XeyMJKs34dJe06W95p8BXyoGkfxzd3v4siGG_Kw8IMchCNgIUSswcb_wCKcV88aQ/NeuralNetOver.gif?download&psid=1)
+![alt text](https://t4zdoq.db.files.1drv.com/y4maZ2tUzJU3O-o78S8U8FXcFFvDI1eCyZZ7yF2nygqYNG-MusMk-wKBPdssc3KxJ21fypNRcNBGovSPq16eE6-9XIY2RuCPBW2U6u6sWgprngAUmM1ss4iHCgEXnfCZnNGlYc_-cTAkc-cJcKpPUgdxNfQySnpSr8SrFGEUgm1iIQhdYfxLmS6NhoFK2S2REikChYWbxifg2UYsjPAHSRGLw/overview.gif?download&psid=1)
 
 ## Neural Net used - Diagram
-![alt text](https://db3pap002files.storage.live.com/y4m3mwm_2IaGQfFWatTSsQwlXPD1dU5qjtbGMex2kKNK9StLmgaFgn7f252hTd8jveYMewrOn890d5wxIBm_T3uE1jK4gs8u_YnT1S40NCY6EEQEbkkCinOT3u05VYYXtbqtDVAN_Fb2XhaTn96GyQgYGAOha78Q6w--kAST3FUEVAdeF9EiA_3RcnAcuCY4LDuNvE7nVIPKnid5kCHsTga2Q/neuralnetimg.JPG?psid=1&width=951&height=328)
+![alt text](https://db3pap002files.storage.live.com/y4mUePuxPnTNRes30qOLDN-TjO_IPI_kt2d0KdJo8no2-iLGVmf2nTMc5_xf0UOhLULzh3cJjsZtcsBtRxsPgCCdXc4KYaQ6Jl8Fv6aTf8RtlqcW5yPFUfQqfhGKKQ0Ji7u3lD82U02iAWcb4RmRcR_43U7A06XvBaeIDDMofznwtBEyrn4pIHszNt4lvb62Nf_2TTYnFqFris4Tm_bIx4h9w/net.JPG?psid=1&width=928&height=310)
 
 **Input layer** - we fill with RGB values.
 
